@@ -52,11 +52,15 @@ close
 '''
 socket
   |
-connect
+[设置为非阻塞模式NONBLOCK)]
   |
-read(null) -> read(null) -> read(null) -> ... read(data)
+connect//-1&&EINPROGRESS,0成功
   |
-write(null) -> write(null) -> write(null) -> ... write(data)
+[设置为非阻塞模式NONBLOCK)]
+  |
+read(null) -> read(null) -> read(null) -> ... read(data)//-1&&EWOULDBLOCK,0成功
+  |
+write(null) -> write(null) -> write(null) -> ... write(data)//-1&&EWOULDBLOCK,0成功
   |
 close
 '''
